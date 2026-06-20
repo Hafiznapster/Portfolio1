@@ -3,27 +3,28 @@
    Editorial Bento Box Design System
    ============================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap');
 
 /* --- DESIGN TOKENS --- */
 :root {
-  /* Colors - Editorial Warm Palette */
-  --bg-primary: #F4F1EB; /* Cream/Beige */
+  /* Colors - Orange & Off-White Palette */
+  --bg-primary: #FFF9F0; /* Off-White */
   --bg-card: #FFFFFF;
-  --text-primary: #1A1D1A; /* Charcoal */
-  --text-secondary: #5A5D5A;
-  --accent-main: #E05D36; /* Terracotta Orange */
-  --accent-secondary: #2C4A3B; /* Forest Green */
-  --accent-tertiary: #E8C14B; /* Muted Yellow */
+  --text-primary: #111111; /* Stark Black */
+  --text-secondary: #555555;
+  --accent-main: #FF5E00; /* Vibrant Orange */
+  --accent-secondary: #FF8533; /* Soft Orange */
+  --accent-tertiary: #FFD6B3; /* Pale Orange */
   
-  --border-color: rgba(26, 29, 26, 0.1);
-  --border-strong: rgba(26, 29, 26, 0.9);
-  --shadow-sm: 0 4px 12px rgba(0,0,0,0.05);
-  --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+  --border-color: rgba(17, 17, 17, 0.1);
+  --border-strong: rgba(17, 17, 17, 0.9);
+  --shadow-sm: 0 4px 12px rgba(255, 94, 0, 0.05);
+  --shadow-md: 0 8px 24px rgba(255, 94, 0, 0.1);
 
   /* Typography */
-  --font-sans: 'Plus Jakarta Sans', sans-serif;
-  --font-serif: 'Instrument Serif', serif;
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Space Grotesk', sans-serif;
+  --font-serif: 'Space Grotesk', sans-serif; /* Reusing heading font for places that had serif */
   --font-mono: 'JetBrains Mono', monospace;
 
   /* Spacing */
