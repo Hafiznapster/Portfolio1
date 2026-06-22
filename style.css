@@ -96,13 +96,13 @@ h1, h2, h3, h4 {
 }
 
 .btn-primary {
-  background: var(--accent-main);
-  color: #fff;
+  background: var(--text-primary);
+  color: var(--bg-primary);
 }
 .btn-primary:hover {
-  background: #c94c28;
+  background: var(--text-secondary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 20px rgba(224, 93, 54, 0.3);
+  box-shadow: 0 8px 20px rgba(17, 17, 17, 0.2);
 }
 
 .btn-secondary {
@@ -156,8 +156,9 @@ h1, h2, h3, h4 {
 .box-hero {
   grid-column: span 8;
   grid-row: span 4;
-  background: var(--accent-secondary);
-  color: #fff;
+  background: var(--bg-card);
+  border: 2px solid var(--text-primary);
+  color: var(--text-primary);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -165,14 +166,15 @@ h1, h2, h3, h4 {
 .box-hero h1 {
   font-size: clamp(3rem, 6vw, 5.5rem);
   margin-bottom: 20px;
+  color: var(--text-primary);
 }
 .box-hero h1 .serif {
   font-size: 1.1em;
-  color: var(--accent-tertiary);
+  color: var(--accent-main);
 }
 .box-hero p {
   font-size: 1.25rem;
-  opacity: 0.9;
+  color: var(--text-secondary);
   max-width: 600px;
   margin-bottom: 40px;
 }
@@ -186,7 +188,8 @@ h1, h2, h3, h4 {
   grid-column: span 4;
   grid-row: span 4;
   padding: 0;
-  background: var(--accent-tertiary);
+  background: var(--bg-primary);
+  border: 2px solid var(--text-primary);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -196,8 +199,6 @@ h1, h2, h3, h4 {
   height: 100%;
   object-fit: cover;
   border-radius: var(--radius-lg);
-  mix-blend-mode: multiply;
-  opacity: 0.9;
   transition: transform 0.5s ease;
 }
 .box-photo:hover img {
@@ -367,6 +368,39 @@ h1, h2, h3, h4 {
 .box-project.p-2 { background: #fff3e0; }
 .box-project.p-3 { background: #e8f5e9; }
 
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.github-icon-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.github-icon-btn:hover {
+  background: var(--text-primary);
+  color: var(--bg-primary);
+  transform: scale(1.1);
+}
+
+.github-icon-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
 .project-icon {
   width: 48px;
   height: 48px;
@@ -376,7 +410,7 @@ h1, h2, h3, h4 {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 24px;
+  margin-bottom: 0;
   font-weight: bold;
   font-size: 1.2rem;
 }

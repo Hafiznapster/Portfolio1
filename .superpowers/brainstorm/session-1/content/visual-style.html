@@ -1,0 +1,378 @@
+<h2>Redesigning the Hero Theme & Project Cards</h2>
+<p class="subtitle">Select the visual theme you prefer for the Hero section, and preview the new GitHub integration for project cards.</p>
+
+<style>
+  .theme-preview-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+  }
+  
+  .theme-option-card {
+    border: 2px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-secondary);
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .theme-option-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  }
+  
+  .theme-option-card.selected {
+    border-color: var(--accent);
+    background: var(--selected-bg);
+  }
+
+  .theme-badge {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+  }
+  
+  /* Mock Portfolio Hero Layout */
+  .mock-bento-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    margin-top: 1rem;
+    font-family: 'Space Grotesk', 'Inter', sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    .mock-bento-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .mock-hero {
+    border-radius: 20px;
+    padding: 30px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 220px;
+  }
+  
+  .mock-hero h3 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 12px;
+  }
+  
+  .mock-hero h3 span {
+    font-weight: 400;
+    opacity: 0.8;
+  }
+  
+  .mock-hero p {
+    font-size: 1rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    max-width: 480px;
+    margin-bottom: 24px;
+  }
+  
+  .mock-buttons {
+    display: flex;
+    gap: 12px;
+  }
+  
+  .mock-btn {
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid transparent;
+  }
+
+  .mock-photo {
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: relative;
+    aspect-ratio: 1;
+    max-height: 240px;
+  }
+  
+  .mock-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Theme-specific styles */
+  
+  /* Theme A: Midnight Dark Mode */
+  .theme-a-badge { background: #1e1b4b; color: #a5b4fc; }
+  .theme-a .mock-hero {
+    background: #0f172a; /* Slate 900 */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .theme-a .mock-hero h3 { color: #f8fafc; }
+  .theme-a .mock-hero h3 span { color: #f97316; /* Orange accent */ }
+  .theme-a .mock-hero p { color: #cbd5e1; }
+  .theme-a .mock-btn-primary {
+    background: #ff5e00;
+    color: white;
+  }
+  .theme-a .mock-btn-outline {
+    border-color: #cbd5e1;
+    color: #f8fafc;
+  }
+  .theme-a .mock-photo {
+    background: #1e293b; /* Slate 800 */
+  }
+  .theme-a .mock-photo img {
+    opacity: 0.85;
+    filter: grayscale(100%) contrast(1.1);
+  }
+  
+  /* Theme B: Sleek Minimalist Cream */
+  .theme-b-badge { background: #fef3c7; color: #d97706; }
+  .theme-b .mock-hero {
+    background: #ffffff;
+    border: 2px solid #111111;
+    color: #111111;
+  }
+  .theme-b .mock-hero h3 { color: #111111; }
+  .theme-b .mock-hero h3 span { color: #ff5e00; }
+  .theme-b .mock-hero p { color: #555555; }
+  .theme-b .mock-btn-primary {
+    background: #111111;
+    color: white;
+  }
+  .theme-b .mock-btn-outline {
+    border-color: #111111;
+    color: #111111;
+  }
+  .theme-b .mock-photo {
+    background: #fafafa;
+    border: 2px solid #111111;
+  }
+  .theme-b .mock-photo img {
+    filter: none;
+  }
+
+  /* Theme C: Deep Forest & Copper */
+  .theme-c-badge { background: #dcfce7; color: #166534; }
+  .theme-c .mock-hero {
+    background: #162a22; /* Deep forest green */
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
+  .theme-c .mock-hero h3 { color: #f4f7f5; }
+  .theme-c .mock-hero h3 span { color: #f97316; /* Copper orange */ }
+  .theme-c .mock-hero p { color: #d1dbd6; }
+  .theme-c .mock-btn-primary {
+    background: #f97316;
+    color: white;
+  }
+  .theme-c .mock-btn-outline {
+    border-color: #d1dbd6;
+    color: #f4f7f5;
+  }
+  .theme-c .mock-photo {
+    background: #253e34;
+  }
+  .theme-c .mock-photo img {
+    mix-blend-mode: luminosity;
+    opacity: 0.8;
+  }
+
+  /* Project Cards Preview */
+  .project-preview-section {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+  }
+  
+  .mock-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin-top: 1rem;
+  }
+  
+  .mock-project-card {
+    background: #ffffff;
+    border: 1px solid rgba(17, 17, 17, 0.1);
+    border-radius: 16px;
+    padding: 24px;
+    position: relative;
+    font-family: 'Inter', sans-serif;
+  }
+  
+  .mock-project-card.p-1 { background: #e3f2fd; }
+  .mock-project-card.p-2 { background: #fff3e0; }
+  .mock-project-card.p-3 { background: #e8f5e9; }
+  
+  .mock-project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+  
+  .mock-project-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    background: #111111;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .github-icon-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #111111;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  
+  .github-icon-btn:hover {
+    background: #111111;
+    color: #ffffff;
+    transform: scale(1.1);
+  }
+  
+  .github-icon-btn svg {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+  }
+  
+  .mock-project-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #111111;
+  }
+  
+  .mock-project-desc {
+    font-size: 0.85rem;
+    color: #555555;
+    line-height: 1.4;
+  }
+</style>
+
+<div class="theme-preview-container">
+  <!-- OPTION A -->
+  <div class="theme-option-card theme-a" data-choice="a" onclick="toggleSelect(this)">
+    <span class="theme-badge theme-a-badge">Option A: Midnight Tech (Recommended)</span>
+    <p>A deep, premium slate blue background with bright orange highlights. Renders the user photo in a sophisticated monochrome/grayscale filter.</p>
+    
+    <div class="mock-bento-row">
+      <div class="mock-hero">
+        <h3><span>Hi, I am</span><br>Hafiz Ahmed.</h3>
+        <p>I build intelligent systems and modern digital products. Bridging the gap between Machine Learning and clean full-stack engineering.</p>
+        <div class="mock-buttons">
+          <span class="mock-btn mock-btn-primary">Roast My Website</span>
+          <span class="mock-btn mock-btn-outline">Let's Talk</span>
+        </div>
+      </div>
+      <div class="mock-photo">
+        <img src="files/hafiz-img.jpeg" alt="Hafiz Ahmed">
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION B -->
+  <div class="theme-option-card theme-b" data-choice="b" onclick="toggleSelect(this)">
+    <span class="theme-badge theme-b-badge">Option B: Editorial Light Contrast</span>
+    <p>A crisp, high-contrast black-on-white layout with a thick signature border. Retains the portfolio's clean, modern editorial layout with minimal orange accents.</p>
+    
+    <div class="mock-bento-row">
+      <div class="mock-hero">
+        <h3><span>Hi, I am</span><br>Hafiz Ahmed.</h3>
+        <p>I build intelligent systems and modern digital products. Bridging the gap between Machine Learning and clean full-stack engineering.</p>
+        <div class="mock-buttons">
+          <span class="mock-btn mock-btn-primary">Roast My Website</span>
+          <span class="mock-btn mock-btn-outline">Let's Talk</span>
+        </div>
+      </div>
+      <div class="mock-photo">
+        <img src="files/hafiz-img.jpeg" alt="Hafiz Ahmed">
+      </div>
+    </div>
+  </div>
+
+  <!-- OPTION C -->
+  <div class="theme-option-card theme-c" data-choice="c" onclick="toggleSelect(this)">
+    <span class="theme-badge theme-c-badge">Option C: Deep Forest & Copper</span>
+    <p>A deep, organic forest green theme that uses copper-toned warm accents. Evokes a unique, refined natural engineering feel.</p>
+    
+    <div class="mock-bento-row">
+      <div class="mock-hero">
+        <h3><span>Hi, I am</span><br>Hafiz Ahmed.</h3>
+        <p>I build intelligent systems and modern digital products. Bridging the gap between Machine Learning and clean full-stack engineering.</p>
+        <div class="mock-buttons">
+          <span class="mock-btn mock-btn-primary">Roast My Website</span>
+          <span class="mock-btn mock-btn-outline">Let's Talk</span>
+        </div>
+      </div>
+      <div class="mock-photo">
+        <img src="files/hafiz-img.jpeg" alt="Hafiz Ahmed">
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="project-preview-section">
+  <h3>GitHub Link Integration for Project Cards</h3>
+  <p class="subtitle">Each project card will now feature a subtle, interactive GitHub button in the top right, fitting perfectly into the bento theme.</p>
+  
+  <div class="mock-projects-grid">
+    <!-- PROJECT 1 -->
+    <div class="mock-project-card p-1">
+      <div class="mock-project-header">
+        <div class="mock-project-icon">TV</div>
+        <div class="github-icon-btn">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+      </div>
+      <h4 class="mock-project-title">Traffic Violation System</h4>
+      <p class="mock-project-desc">Real-time YOLOv8-powered detection system for tracking and predicting traffic anomalies.</p>
+    </div>
+
+    <!-- PROJECT 2 -->
+    <div class="mock-project-card p-2">
+      <div class="mock-project-header">
+        <div class="mock-project-icon">NW</div>
+        <div class="github-icon-btn">
+          <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+        </div>
+      </div>
+      <h4 class="mock-project-title">NetWork Platform</h4>
+      <p class="mock-project-desc">A LinkedIn-inspired college networking platform with LLaMA 3 AI job-matching engine.</p>
+    </div>
+  </div>
+</div>
