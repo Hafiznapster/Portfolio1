@@ -284,6 +284,68 @@ h1, h2, h3, h4 {
 #roast-result ul { margin-left: 20px; margin-bottom: 16px; }
 #roast-result li { margin-bottom: 8px; }
 
+/* Roast My Resume Section (Spans 12 cols) */
+.box-roast-resume {
+  grid-column: span 12;
+  grid-row: span 3;
+  background: var(--text-primary);
+  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+}
+.box-roast-resume .roast-form {
+  background: #222;
+  color: #fff;
+}
+.file-upload-group {
+  margin-bottom: 20px;
+}
+.file-upload-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 16px;
+  border: 2px dashed #555;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: all 0.2s ease;
+  background: #2a2a2a;
+}
+.file-upload-label:hover {
+  border-color: var(--accent-main);
+  background: #333;
+}
+#file-name-display {
+  font-weight: 600;
+  margin-bottom: 8px;
+  word-break: break-all;
+}
+#roast-resume-result-container {
+  display: none;
+  margin-top: 24px;
+  padding: 24px;
+  background: #1a1a1a;
+  border-radius: 8px;
+  border-left: 4px solid var(--accent-main);
+  max-height: 400px;
+  overflow-y: auto;
+}
+#roast-resume-result-container.active {
+  display: block;
+  animation: fadeIn 0.5s ease;
+}
+#roast-resume-result {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+#roast-resume-result h3 { margin-top: 16px; margin-bottom: 8px; font-size: 1.2rem; color: var(--accent-main);}
+#roast-resume-result ul { margin-left: 20px; margin-bottom: 16px; }
+#roast-resume-result li { margin-bottom: 8px; }
+
 /* Loader */
 .loader {
   display: none;
@@ -527,12 +589,12 @@ h1, h2, h3, h4 {
 @media (max-width: 1024px) {
   .box-hero { grid-column: span 12; }
   .box-photo { grid-column: span 12; grid-row: span 3; }
-  .box-roast { grid-template-columns: 1fr; }
+  .box-roast, .box-roast-resume { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 768px) {
   .bento-container { display: flex; flex-direction: column; }
-  .box-hero, .box-photo, .box-roast, .box-exp, .box-skills, .box-project, .box-services, .box-location, .box-education, .box-hobbies, .box-contact {
+  .box-hero, .box-photo, .box-roast, .box-roast-resume, .box-exp, .box-skills, .box-project, .box-services, .box-location, .box-education, .box-hobbies, .box-contact {
     grid-column: span 12;
     height: auto;
   }

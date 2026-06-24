@@ -46,6 +46,30 @@
       </div>
     </div>
 
+    <!-- ROAST MY RESUME BOX -->
+    <div class="bento-box box-roast-resume" id="roast-my-resume">
+      <div class="roast-content">
+        <h2 class="serif">Roast My Resume.</h2>
+        <p>Think your resume is flawless? Upload your PDF or DOCX file below and let my AI persona completely obliterate your career choices.</p>
+      </div>
+      <div class="roast-form">
+        <div class="file-upload-group">
+          <label for="resume-input" class="file-upload-label">
+            <span id="file-name-display">Drop your resume here or click to upload</span>
+            <span class="api-key-hint">Supports .pdf, .doc, .docx (Max 3MB)</span>
+          </label>
+          <input type="file" id="resume-input" accept=".pdf,.doc,.docx" hidden>
+        </div>
+        <button id="roast-resume-btn" class="btn btn-primary" style="width: 100%; margin-top: 24px;" disabled>Roast It!</button>
+        
+        <div class="loader" id="roast-resume-loader"></div>
+        
+        <div id="roast-resume-result-container">
+          <div id="roast-resume-result"></div>
+        </div>
+      </div>
+    </div>
+
     <!-- EXPERIENCE BOX -->
     <div class="bento-box box-exp">
       <div class="box-header">
@@ -196,6 +220,7 @@
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.21/mammoth.browser.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
